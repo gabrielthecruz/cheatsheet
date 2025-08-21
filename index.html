@@ -1,0 +1,174 @@
+<html>
+    <head>
+        <title>Cheatsheet</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+        <!--<link rel="stylesheet" href="css/style.css" /> -->
+        <script>
+            function showMyCheat(name) {
+                document.getElementById("tmux").hidden = true;
+                document.getElementById("nvim").hidden = true;
+                document.getElementById(name).hidden = false;
+            }
+
+        </script>
+    </head>
+    <body class="bg-black">
+        <div class="container text-center p-4">
+            <div id="tmux" class="row">
+                <div class="col">
+                    <table class="table table-sm table-striped table-hover table-borderless text-center border border-1 rounded">
+                        <thead class="table-primary">
+                            <tr>
+                                <th colspan=2>TMUX</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>C-b o</td>
+                                <td>change panel focus</td>
+                            </tr>
+                            <tr>
+                                <td>C-b <space></td>
+                                <td>change to next layout</td>
+                            </tr>
+                            <tr>
+                                <td>C-b %</td>
+                                <td>split screen horizontally</td>
+                            </tr>
+                            <tr>
+                                <td>C-b "</td>
+                                <td>split screen vertically</td>
+                            </tr>
+                            <tr>
+                                <td>C-d</td>
+                                <td>close actual session</td>
+                            </tr>
+                            <tr>
+                                <td>C-b C-o</td>
+                                <td>rotate panels</td>
+                            </tr>
+                            <tr>
+                                <td>C-b $</td>
+                                <td>rename actual session</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="col">
+                    <table class="table table-sm table-striped table-hover table-borderless text-center border border-1 rounded">
+                        <thead class=table-primary>
+                            <tr>
+                                <th colspan=2>TMUX Commands</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>resize-pane</td>
+                                <td>resizes pane</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="nvim" class="row" hidden="true">
+                <div class="col">
+                    <table class="table table-sm table-striped table-hover table-borderless text-center border border-1 rounded">
+                        <thead class=table-primary>
+                            <tr>
+                                <th colspan=2>Harpoon</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>&lt;leader&gt;a</td>
+                                <td>add file</td>
+                            </tr>
+                            <tr>
+                                <td>C-e</td>
+                                <td>toggle quick menu</td>
+                            </tr>
+                            <tr>
+                                <td>C-h</td>
+                                <td>open file 1</td>
+                            </tr>
+                            <tr>
+                                <td>C-t</td>
+                                <td>open file 2</td>
+                            </tr>
+                            <tr>
+                                <td>C-n</td>
+                                <td>open file 3</td>
+                            </tr>
+                            <tr>
+                                <td>C-s</td>
+                                <td>open file 4</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="col">
+                    <table class="table table-sm table-striped table-hover table-borderless text-center border border-1 rounded">
+                        <thead class="table-primary">
+                            <tr>
+                                <th colspan=2>NVIM</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>&lt;leader&gt;pv</td>
+                                <td>open project view</td>
+                            </tr>
+                            <tr>
+                                <td>&lt;leader&gt;f</td>
+                                <td>lsp format</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="col">
+                    <table class="table table-sm table-striped table-hover table-borderless text-center border border-1 rounded">
+                        <thead class="table-primary">
+                            <tr>
+                                <th colspan=2>Fugitive</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>&lt;leader&gt;gs</td>
+                                <td>something about git</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="col">
+                    <table class="table table-sm table-striped table-hover table-borderless text-center border border-1 rounded">
+                        <thead class="table-primary">
+                            <tr>
+                                <th colspan=2>Commands</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>ColorMyPencils()</td>
+                                <td>color my pencils</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="control" class="row fixed-bottom p-2 justify-content-md-center">
+                <div class="col col-sm-2 text-center">
+                    <button type="button" class="btn btn-primary btn-sm" onclick="showMyCheat('tmux')">TMUX</button>
+                    <button type="button" class="btn btn-primary btn-sm" onclick="showMyCheat('nvim')">NVIM</button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
