@@ -38,6 +38,16 @@ C-p     -> select previous item
 C-n     -> select next item
 C-y     -> confirm
 C-Space -> complete
+
+# Coffee
+
+## V-60 Recipe (James Hoffmann)
+15g  -> coffee. click 15 of Timemore C3S.
+250g -> boiling water
+0:00 -> pour 30g of water, gently swirl
+0:45 -> pour until 150g of water
+1:15 -> pour until 250g of water (critical)
+1:45 -> spoon stir (gently) and gently swirl
 `;
 
 function toggleDarkMode(mode) {
@@ -54,9 +64,8 @@ function toggleDarkMode(mode) {
   }
 }
 
+var myCheats = [];
 function showMyCheat(name) {
-  var myCheats = ["TMUX", "NVIM"];
-
   myCheats.forEach(n => {
     document.getElementById(n).hidden = true;
   });
@@ -147,7 +156,6 @@ function createCategory(name, cards, hidden) {
 function createCheatsheet(parsedCheat) {
   var container = document.getElementById('container');
   var hidden = false;
-  var categories = [];
 
   var column = document.createElement('div');
   column.className = 'col-sm-3';
@@ -170,7 +178,7 @@ function createCheatsheet(parsedCheat) {
     
     container.appendChild(createCategory(categoryName, cards, hidden));
     hidden = true;
-    categories.push(categoryName);
+    myCheats.push(categoryName);
 
     var button = document.createElement('button');
     button.type = 'button';
