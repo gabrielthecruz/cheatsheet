@@ -14,10 +14,6 @@ resize-panel -> set panel size
 
 # NVIM
 
-## Editor
-<leader>pv -> open project view
-<leader>f  -> lsp format
-
 ## Harpoon
 <leader>a -> add file
 C-e       -> toggle quick menu
@@ -26,19 +22,31 @@ C-t       -> open file 2
 C-n       -> open file 3
 C-s       -> open file 4
 
+## Other shortcuts
+<leader>gs -> Git (fugitive)
+<leader>u  -> toggle undotree
+<leader>pf -> find files (telescope)
+<leader>ps -> grep (telescope)
+C-p        -> git files (telescope)
+
+## Editor
+<leader>pv -> open project view
+<leader>f  -> lsp format
+
 ## LSP
 C-p     -> select previous item
 C-n     -> select next item
 C-y     -> confirm
 C-Space -> complete
-
-## Other shortcuts
-<leader>gs -> Git (fugitive)
-<leader>u -> toggle undotree
-<leader>pf -> find files (telescope)
-<leader>ps -> grep (telescope)
-C-p        -> git files (telescope)
 `;
+
+function toggleDarkMode() {
+  var html = document.getElementsByTagName('html')[0];
+  if (html.getAttribute('data-bs-theme') == 'dark')
+    html.setAttribute('data-bs-theme', 'light');
+  else
+    html.setAttribute('data-bs-theme', 'dark');
+}
 
 function showMyCheat(name) {
   var myCheats = ["TMUX", "NVIM"];
@@ -53,7 +61,7 @@ function showMyCheat(name) {
 function parseMyCheat() {
   var data = {};
   var categoryName = '';
-  var cardName = '';
+  var cardName = ''; 
 
   rawContent.split('\n').forEach(line => {
     if (line.trim() == '') {
@@ -94,13 +102,13 @@ function createCard(name, entries) {
   cardElem.appendChild(cardHeader);
 
   var table = document.createElement('table');
-  table.className = 'table table-sm table-borderless table-hover text-center';
+  table.className = 'table table-sm table-borderless table-responsive table-hover text-center';
 
   var tbody = document.createElement('tbody');
   for (const key in entries) {
     var value = entries[key];
     var row = document.createElement('tr');
-    row.innerHTML = '<th>' + key + '</th><td>' + value + '</td>';
+    row.innerHTML = '<th class="align-middle">' + key + '</th><td>' + value + '</td>';
 
     tbody.appendChild(row);
   }
@@ -146,8 +154,11 @@ function createCheatsheet(parsedCheat) {
   cardHeader.className = 'card-header';
   cardHeader.innerText = name;
 
-  column.appendChild(cardElem);
-  cardElem.appendChild(cardHeader);
+  var control = document.createElement('div');
+  control.className = 'row fixed-bottom p-2 justify-content-md-center';
+
+  var buttonsContainer = document.createElement('div');
+  buttonsContainer.className = 'col text-center';
 
   for (const categoryName in parsedCheat) {
     var cards = parsedCheat[categoryName];
@@ -155,24 +166,26 @@ function createCheatsheet(parsedCheat) {
     container.appendChild(createCategory(categoryName, cards, hidden));
     hidden = true;
     categories.push(categoryName);
-  }
 
-  var control = document.createElement('div');
-  control.className = 'row fixed-bottom p-2 justify-content-md-center';
-
-  var buttonsContainer = document.createElement('div');
-  buttonsContainer.className = 'col col-sm-2 text-center';
-
-  categories.forEach(name => {
     var button = document.createElement('button');
     button.type = 'button';
     button.className = 'btn btn-primary btn-sm m-2';
-    button.setAttribute('onclick', 'showMyCheat(\''+name+'\')');
-    button.innerText = name;
+    button.setAttribute('onclick', 'showMyCheat(\'' + categoryName + '\')');
+    button.innerText = categoryName;
 
     buttonsContainer.appendChild(button);
-  });
+  }
 
+  var darkModeBtn = document.createElement('button');
+  darkModeBtn.type = 'button';
+  darkModeBtn.className = 'btn btn-primary btn-sm m-2';
+  darkModeBtn.setAttribute('onclick', 'toggleDarkMode()');
+  darkModeBtn.innerText = '🌑';
+
+  buttonsContainer.appendChild(darkModeBtn);
+
+  column.appendChild(cardElem);
+  cardElem.appendChild(cardHeader);
   control.appendChild(buttonsContainer);
   container.appendChild(control);
 }
