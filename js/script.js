@@ -162,7 +162,7 @@ function createCheatsheet(parsedCheat) {
 
   for (const categoryName in parsedCheat) {
     var cards = parsedCheat[categoryName];
-    console.log('createCheatsheet -> ', categoryName, ', ', cards);
+    
     container.appendChild(createCategory(categoryName, cards, hidden));
     hidden = true;
     categories.push(categoryName);
