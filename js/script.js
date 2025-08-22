@@ -70,8 +70,12 @@ function parseMyCheat() {
   var cardName = ''; 
 
   rawContent.split('\n').forEach(line => {
-    if (line.trim() == '') {
-      // continue; 
+    if (line.includes('->')) {
+      // table entries
+      var entry = line.split('->');
+      entry[0] = entry[0].replaceAll('<', '&lt;').replaceAll('>', '&gt;');
+      entry[1] = entry[1].replaceAll('<', '&lt;').replaceAll('>', '&gt;');
+      data[cardName][categoryName][entry[0].trim()] = entry[1].trim();
     }
     else if (line.trim().startsWith('##')) {
       // new category
@@ -82,11 +86,6 @@ function parseMyCheat() {
       // new card
       cardName = line.replace('#', '').trim();
       data[cardName] = {};
-    }
-    else {
-      // table entries
-      var entry = line.split('->');
-      data[cardName][categoryName][entry[0].trim()] = entry[1].trim();
     }
   });
 
