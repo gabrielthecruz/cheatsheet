@@ -40,12 +40,18 @@ C-y     -> confirm
 C-Space -> complete
 `;
 
-function toggleDarkMode() {
+function toggleDarkMode(mode) {
   var html = document.getElementsByTagName('html')[0];
-  if (html.getAttribute('data-bs-theme') == 'dark')
-    html.setAttribute('data-bs-theme', 'light');
-  else
-    html.setAttribute('data-bs-theme', 'dark');
+
+  if (mode !== null) {
+    html.setAttribute('data-bs-theme', mode);
+  }
+  else {
+    if (html.getAttribute('data-bs-theme') == 'dark')
+      html.setAttribute('data-bs-theme', 'light');
+    else
+      html.setAttribute('data-bs-theme', 'dark');
+  }
 }
 
 function showMyCheat(name) {
@@ -179,7 +185,7 @@ function createCheatsheet(parsedCheat) {
   var darkModeBtn = document.createElement('button');
   darkModeBtn.type = 'button';
   darkModeBtn.className = 'btn btn-primary btn-sm m-2';
-  darkModeBtn.setAttribute('onclick', 'toggleDarkMode()');
+  darkModeBtn.setAttribute('onclick', 'toggleDarkMode(null)');
   darkModeBtn.innerText = '🌑';
 
   buttonsContainer.appendChild(darkModeBtn);

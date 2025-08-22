@@ -12,7 +12,13 @@
   </head>
   <body>
     <div id='container' class="container text-center p-4"> </div>
-    <script type='text/javascript'>createCheatsheet(parseMyCheat());</script>
+    <script type='text/javascript'>
+      createCheatsheet(parseMyCheat());
+
+      var hours = (new Date()).getHours();
+      if (hours >= 8 && hours <= 18)
+        toggleDarkMode('light');
+    </script>
   </body>
 </html>
 
