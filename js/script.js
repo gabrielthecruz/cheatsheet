@@ -8,6 +8,7 @@ C-b "       -> split screen vertically
 C-d         -> close panel
 C-b C-o     -> rotate the panels
 C-b $       -> rename actual session
+C-b z       -> toggle pane maximization
 
 ## Commands
 resize-panel -> set panel size
@@ -38,6 +39,7 @@ C-p     -> select previous item
 C-n     -> select next item
 C-y     -> confirm
 C-Space -> complete
+:Mason  -> to install new LSP server
 
 # Coffee
 
